@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { usePlayerStore } from "@/stores/players";
 import { useGameBoardStore } from "@/stores/gameBoard";
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 
 const playerStore = usePlayerStore();
 const boardStore = useGameBoardStore();
+const playerWin = ref<null | string>(null);
+
+onMounted(() => {
+  boardStore.prepareToClearBoard();
+});
+
+
 const player = computed(() => {
   return playerStore.getPlayerWhoPlayNow().value;
 });
 
-const playerWin = ref<null | string>(null);
-
-//if 3 dans une column
 function writeInColumn(columnNumber: number) {
   if (player.value.hisTurn && !boardStore.board[columnNumber].isChecked) {
     boardStore.board[columnNumber] = {
@@ -19,19 +23,33 @@ function writeInColumn(columnNumber: number) {
       player: player.value,
     };
     if(boardStore.getIsWin()) {
-      playerWin.value  = `${player.value.firstname} ${player.value.lastname}`;
+      playerWin.value  = `${player.value.firstname} ${player.value.lastname} win this game`;
+      return;
+    }
+    if (boardStore.getEqualityPart()) {
+      playerWin.value = 'Equality';
       return;
     }
     playerStore.changeTurn();
   }
+}
+
+function restartGame() {
+  playerWin.value = null;
+  boardStore.cleanBoard();
 }
 </script>
 
 <template>
   <h1>Play page</h1>
   <h2>Turn of : {{ player.firstname }}</h2>
-  <div v-if="playerWin">{{ playerWin }} win this game</div>
-  <div>Restart</div>
+  <div v-if="playerWin">
+    <p>
+      {{ playerWin }}
+    </p>
+    <div @click="restartGame">One  more ?</div>
+  </div>
+
   <div class="game-board">
     <div class="row">
       <div class="column" @click="writeInColumn(1)">

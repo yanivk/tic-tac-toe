@@ -44,6 +44,18 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
     },
   });
 
+  const saveGameBoard = ref<{
+    [key: number]: { isChecked: boolean; player: null | PlayerInterface };
+  }>({});
+
+  function prepareToClearBoard() {
+    saveGameBoard.value = { ...board.value }
+  }
+
+  function cleanBoard() {
+    board.value = { ...saveGameBoard.value }
+  }
+
   function getIsWin() {
     let isWin = false;
     // Horizontal win
@@ -94,5 +106,28 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
 
     return isWin;
   }
-  return { board, getIsWin };
+
+  function getEqualityPart() {
+    /*let isEquality = false;
+    for (let i = 0; i < 9; i++) {
+      if (board.value[i].isChecked)
+        isEquality = false
+    }*/
+    if (
+      board.value[1].isChecked &&
+      board.value[2].isChecked &&
+      board.value[3].isChecked &&
+      board.value[4].isChecked &&
+      board.value[5].isChecked &&
+      board.value[6].isChecked &&
+      board.value[7].isChecked &&
+      board.value[8].isChecked &&
+      board.value[9].isChecked &&
+      !getIsWin()
+    ) {
+      return true
+    }
+  }
+
+  return { board, saveGameBoard, prepareToClearBoard, cleanBoard, getIsWin, getEqualityPart };
 });
