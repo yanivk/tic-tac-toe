@@ -8,6 +8,7 @@ export const usePlayerStore = defineStore("player", () => {
     firstname: "John",
     symbol: "X",
     hisTurn: true,
+    score: 0,
   });
 
   const playerTwoInformation = ref<PlayerInterface>({
@@ -15,6 +16,7 @@ export const usePlayerStore = defineStore("player", () => {
     firstname: "Jane",
     symbol: "O",
     hisTurn: false,
+    score: 0,
   });
 
   function changeTurn() {

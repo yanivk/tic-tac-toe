@@ -3,4 +3,5 @@ export interface PlayerInterface {
   firstname: string;
   symbol: string;
   hisTurn: boolean;
+  score: number;
 }

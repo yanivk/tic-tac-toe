@@ -16,6 +16,13 @@ const player = computed(() => {
   return playerStore.getPlayerWhoPlayNow().value;
 });
 
+const playerOne = computed(() => {
+  return playerStore.playerOneInformation
+})
+const playerTwo = computed(() => {
+  return playerStore.playerTwoInformation
+})
+
 function writeInColumn(columnNumber: number) {
   if (player.value.hisTurn && !boardStore.board[columnNumber].isChecked) {
     boardStore.board[columnNumber] = {
@@ -24,6 +31,11 @@ function writeInColumn(columnNumber: number) {
     };
     if(boardStore.getIsWin()) {
       playerWin.value  = `${player.value.firstname} ${player.value.lastname} win this game`;
+      if(player.value.firstname === playerOne.value.firstname) {
+        playerOne.value.score += 1;
+      } else {
+        playerTwo.value.score += 1;
+      }
       return;
     }
     if (boardStore.getEqualityPart()) {
@@ -43,6 +55,13 @@ function restartGame() {
 <template>
   <h1>Play page</h1>
   <h2>Turn of : {{ player.firstname }}</h2>
+  <div>
+    <h3>SCORE</h3>
+    <p class="score">
+      <span>{{ playerOne.firstname }} {{ playerOne.lastname }} : <span class="result-score">{{ playerOne.score }}</span></span>
+      <span>{{ playerTwo.firstname }} {{ playerTwo.lastname }} : <span class="result-score">{{ playerTwo.score }}</span></span>
+    </p>
+  </div>
   <div v-if="playerWin">
     <p>
       {{ playerWin }}
@@ -131,5 +150,14 @@ function restartGame() {
 .row .column:hover {
   background: #ececec;
   cursor: pointer;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+.result-score {
+  font-weight: bold;
 }
 </style>
