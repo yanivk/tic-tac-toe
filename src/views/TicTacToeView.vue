@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { usePlayerStore } from "@/stores/players";
 import { useGameBoardStore } from "@/stores/gameBoard";
-import { computed } from "vue";
+import {computed, ref} from "vue";
 
 const playerStore = usePlayerStore();
 const boardStore = useGameBoardStore();
 const player = computed(() => {
   return playerStore.getPlayerWhoPlayNow().value;
 });
+
+const playerWin = ref<null | string>(null);
+
 //if 3 dans une column
 function writeInColumn(columnNumber: number) {
   if (player.value.hisTurn && !boardStore.board[columnNumber].isChecked) {
@@ -15,6 +18,10 @@ function writeInColumn(columnNumber: number) {
       isChecked: true,
       player: player.value,
     };
+    if(boardStore.getIsWin()) {
+      playerWin.value  = `${player.value.firstname} ${player.value.lastname}`;
+      return;
+    }
     playerStore.changeTurn();
   }
 }
@@ -23,6 +30,8 @@ function writeInColumn(columnNumber: number) {
 <template>
   <h1>Play page</h1>
   <h2>Turn of : {{ player.firstname }}</h2>
+  <div v-if="playerWin">{{ playerWin }} win this game</div>
+  <div>Restart</div>
   <div class="game-board">
     <div class="row">
       <div class="column" @click="writeInColumn(1)">

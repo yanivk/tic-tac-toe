@@ -44,5 +44,55 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
     },
   });
 
-  return { board };
+  function getIsWin() {
+    let isWin = false;
+    // Horizontal win
+    if(board.value[1].isChecked && board.value[2].isChecked && board.value[3].isChecked) {
+      if (board.value[1].player?.firstname === board.value[2].player?.firstname &&  board.value[2].player?.firstname === board.value[3].player?.firstname) {
+        isWin = true;
+      }
+    }
+    if (board.value[4].isChecked && board.value[5].isChecked && board.value[6].isChecked) {
+      if (board.value[4].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[6].player?.firstname) {
+        isWin = true;
+      }
+    }
+    if (board.value[7].isChecked && board.value[8].isChecked && board.value[9].isChecked) {
+      if (board.value[7].player?.firstname === board.value[8].player?.firstname &&  board.value[8].player?.firstname === board.value[9].player?.firstname) {
+        isWin = true;
+      }
+    }
+
+    //Vertical win
+    if(board.value[1].isChecked && board.value[4].isChecked && board.value[7].isChecked) {
+      if (board.value[1].player?.firstname === board.value[4].player?.firstname &&  board.value[4].player?.firstname === board.value[7].player?.firstname) {
+        isWin = true;
+      }
+    }
+    if (board.value[2].isChecked && board.value[5].isChecked && board.value[8].isChecked) {
+      if (board.value[2].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[8].player?.firstname) {
+        isWin = true;
+      }
+    }
+    if (board.value[3].isChecked && board.value[6].isChecked && board.value[9].isChecked) {
+      if (board.value[3].player?.firstname === board.value[6].player?.firstname &&  board.value[6].player?.firstname === board.value[9].player?.firstname) {
+        isWin = true;
+      }
+    }
+
+    //Diagonal win
+    if(board.value[1].isChecked && board.value[5].isChecked && board.value[9].isChecked) {
+      if (board.value[1].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[9].player?.firstname) {
+        isWin = true;
+      }
+    }
+    if (board.value[3].isChecked && board.value[5].isChecked && board.value[7].isChecked) {
+      if (board.value[3].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[7].player?.firstname) {
+        isWin = true;
+      }
+    }
+
+    return isWin;
+  }
+  return { board, getIsWin };
 });
