@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import {useGameBoardStore} from "@/stores/gameBoard";
+import { useGameBoardStore } from "@/stores/gameBoard";
 
 const boardStore = useGameBoardStore();
 const props = defineProps({
   columnNumber: Number,
-})
-
+});
 </script>
 
 <template>
   <div class="column">
-      <span v-if="boardStore.board[props.columnNumber].player !== null">
-        {{ boardStore.board[props.columnNumber].player.symbol }}
-      </span>
+    <span v-if="boardStore.board[props.columnNumber].player !== null">
+      {{ boardStore.board[props.columnNumber].player.symbol }}
+    </span>
   </div>
 </template>
 

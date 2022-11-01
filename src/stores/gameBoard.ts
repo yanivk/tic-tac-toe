@@ -49,57 +49,113 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
   }>({});
 
   function prepareToClearBoard() {
-    saveGameBoard.value = { ...board.value }
+    saveGameBoard.value = { ...board.value };
   }
 
   function cleanBoard() {
-    board.value = { ...saveGameBoard.value }
+    board.value = { ...saveGameBoard.value };
   }
 
   function getIsWin() {
     let isWin = false;
     // Horizontal win
-    if(board.value[1].isChecked && board.value[2].isChecked && board.value[3].isChecked) {
-      if (board.value[1].player?.firstname === board.value[2].player?.firstname &&  board.value[2].player?.firstname === board.value[3].player?.firstname) {
+    if (
+      board.value[1].isChecked &&
+      board.value[2].isChecked &&
+      board.value[3].isChecked
+    ) {
+      if (
+        board.value[1].player?.firstname === board.value[2].player?.firstname &&
+        board.value[2].player?.firstname === board.value[3].player?.firstname
+      ) {
         isWin = true;
       }
     }
-    if (board.value[4].isChecked && board.value[5].isChecked && board.value[6].isChecked) {
-      if (board.value[4].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[6].player?.firstname) {
+    if (
+      board.value[4].isChecked &&
+      board.value[5].isChecked &&
+      board.value[6].isChecked
+    ) {
+      if (
+        board.value[4].player?.firstname === board.value[5].player?.firstname &&
+        board.value[5].player?.firstname === board.value[6].player?.firstname
+      ) {
         isWin = true;
       }
     }
-    if (board.value[7].isChecked && board.value[8].isChecked && board.value[9].isChecked) {
-      if (board.value[7].player?.firstname === board.value[8].player?.firstname &&  board.value[8].player?.firstname === board.value[9].player?.firstname) {
+    if (
+      board.value[7].isChecked &&
+      board.value[8].isChecked &&
+      board.value[9].isChecked
+    ) {
+      if (
+        board.value[7].player?.firstname === board.value[8].player?.firstname &&
+        board.value[8].player?.firstname === board.value[9].player?.firstname
+      ) {
         isWin = true;
       }
     }
 
     //Vertical win
-    if(board.value[1].isChecked && board.value[4].isChecked && board.value[7].isChecked) {
-      if (board.value[1].player?.firstname === board.value[4].player?.firstname &&  board.value[4].player?.firstname === board.value[7].player?.firstname) {
+    if (
+      board.value[1].isChecked &&
+      board.value[4].isChecked &&
+      board.value[7].isChecked
+    ) {
+      if (
+        board.value[1].player?.firstname === board.value[4].player?.firstname &&
+        board.value[4].player?.firstname === board.value[7].player?.firstname
+      ) {
         isWin = true;
       }
     }
-    if (board.value[2].isChecked && board.value[5].isChecked && board.value[8].isChecked) {
-      if (board.value[2].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[8].player?.firstname) {
+    if (
+      board.value[2].isChecked &&
+      board.value[5].isChecked &&
+      board.value[8].isChecked
+    ) {
+      if (
+        board.value[2].player?.firstname === board.value[5].player?.firstname &&
+        board.value[5].player?.firstname === board.value[8].player?.firstname
+      ) {
         isWin = true;
       }
     }
-    if (board.value[3].isChecked && board.value[6].isChecked && board.value[9].isChecked) {
-      if (board.value[3].player?.firstname === board.value[6].player?.firstname &&  board.value[6].player?.firstname === board.value[9].player?.firstname) {
+    if (
+      board.value[3].isChecked &&
+      board.value[6].isChecked &&
+      board.value[9].isChecked
+    ) {
+      if (
+        board.value[3].player?.firstname === board.value[6].player?.firstname &&
+        board.value[6].player?.firstname === board.value[9].player?.firstname
+      ) {
         isWin = true;
       }
     }
 
     //Diagonal win
-    if(board.value[1].isChecked && board.value[5].isChecked && board.value[9].isChecked) {
-      if (board.value[1].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[9].player?.firstname) {
+    if (
+      board.value[1].isChecked &&
+      board.value[5].isChecked &&
+      board.value[9].isChecked
+    ) {
+      if (
+        board.value[1].player?.firstname === board.value[5].player?.firstname &&
+        board.value[5].player?.firstname === board.value[9].player?.firstname
+      ) {
         isWin = true;
       }
     }
-    if (board.value[3].isChecked && board.value[5].isChecked && board.value[7].isChecked) {
-      if (board.value[3].player?.firstname === board.value[5].player?.firstname &&  board.value[5].player?.firstname === board.value[7].player?.firstname) {
+    if (
+      board.value[3].isChecked &&
+      board.value[5].isChecked &&
+      board.value[7].isChecked
+    ) {
+      if (
+        board.value[3].player?.firstname === board.value[5].player?.firstname &&
+        board.value[5].player?.firstname === board.value[7].player?.firstname
+      ) {
         isWin = true;
       }
     }
@@ -125,9 +181,16 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[9].isChecked &&
       !getIsWin()
     ) {
-      return true
+      return true;
     }
   }
 
-  return { board, saveGameBoard, prepareToClearBoard, cleanBoard, getIsWin, getEqualityPart };
+  return {
+    board,
+    saveGameBoard,
+    prepareToClearBoard,
+    cleanBoard,
+    getIsWin,
+    getEqualityPart,
+  };
 });

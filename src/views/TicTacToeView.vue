@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePlayerStore } from "@/stores/players";
 import { useGameBoardStore } from "@/stores/gameBoard";
-import {computed, onMounted, ref} from "vue";
+import { computed, onMounted, ref } from "vue";
 import ScoreBoard from "@/components/ellementsGame/ScoreBoard.vue";
 import GameBoard from "@/components/ellementsGame/GameBoard.vue";
 
@@ -35,10 +35,9 @@ function restartGame() {
     <p>
       {{ playerWin }}
     </p>
-    <div @click="restartGame">One  more ?</div>
+    <div @click="restartGame">One more ?</div>
   </div>
   <game-board v-on:playerResult="setPlayerResult" />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

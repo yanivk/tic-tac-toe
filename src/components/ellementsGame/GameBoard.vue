@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
-import {usePlayerStore} from "@/stores/players";
-import {useGameBoardStore} from "@/stores/gameBoard";
+import { computed, ref } from "vue";
+import { usePlayerStore } from "@/stores/players";
+import { useGameBoardStore } from "@/stores/gameBoard";
 import ColumnBoard from "@/components/ellementsGame/partials/ColumnBoard.vue";
 
 const playerStore = usePlayerStore();
@@ -12,16 +12,16 @@ const player = computed(() => {
   return playerStore.getPlayerWhoPlayNow().value;
 });
 const playerOne = computed(() => {
-  return playerStore.playerOneInformation
+  return playerStore.playerOneInformation;
 });
 const playerTwo = computed(() => {
-  return playerStore.playerTwoInformation
+  return playerStore.playerTwoInformation;
 });
 
 const rangeCol2 = ref([4, 5, 6]);
 const rangeCol3 = ref([7, 8, 9]);
 
-const emit = defineEmits(['playerResult'])
+const emit = defineEmits(["playerResult"]);
 
 function writeInColumn(columnNumber: number) {
   if (player.value.hisTurn && !boardStore.board[columnNumber].isChecked) {
@@ -29,10 +29,10 @@ function writeInColumn(columnNumber: number) {
       isChecked: true,
       player: player.value,
     };
-    if(boardStore.getIsWin()) {
-      playerWin.value  = `${player.value.firstname} ${player.value.lastname} win this game`;
-      emit('playerResult', playerWin.value);
-      if(player.value.firstname === playerOne.value.firstname) {
+    if (boardStore.getIsWin()) {
+      playerWin.value = `${player.value.firstname} ${player.value.lastname} win this game`;
+      emit("playerResult", playerWin.value);
+      if (player.value.firstname === playerOne.value.firstname) {
         playerOne.value.score += 1;
       } else {
         playerTwo.value.score += 1;
@@ -40,8 +40,8 @@ function writeInColumn(columnNumber: number) {
       return;
     }
     if (boardStore.getEqualityPart()) {
-      playerWin.value = 'Equality';
-      emit('playerResult', playerWin.value);
+      playerWin.value = "Equality";
+      emit("playerResult", playerWin.value);
       return;
     }
     playerStore.changeTurn();
@@ -52,17 +52,17 @@ function writeInColumn(columnNumber: number) {
 <template>
   <div class="game-board">
     <div class="row">
-      <template v-for="i in 3">
+      <template v-for="i in 3" :key="i">
         <column-board :column-number="i" @click="writeInColumn(i)" />
       </template>
     </div>
     <div class="row">
-      <template v-for="i in rangeCol2">
+      <template v-for="i in rangeCol2" :key="i">
         <column-board :column-number="i" @click="writeInColumn(i)" />
       </template>
     </div>
     <div class="row">
-      <template v-for="i in rangeCol3">
+      <template v-for="i in rangeCol3" :key="i">
         <column-board :column-number="i" @click="writeInColumn(i)" />
       </template>
     </div>
