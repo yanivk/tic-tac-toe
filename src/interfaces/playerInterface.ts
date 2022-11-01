@@ -1,6 +1,5 @@
 export interface PlayerInterface {
-  lastname: string;
-  firstname: string;
+  pseudo: string;
   symbol: string;
   hisTurn: boolean;
   score: number;

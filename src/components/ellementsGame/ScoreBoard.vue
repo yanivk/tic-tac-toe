@@ -16,11 +16,11 @@ const playerTwo = computed(() => {
     <h3>SCORE</h3>
     <p class="score">
       <span
-        >{{ playerOne.firstname }} {{ playerOne.lastname }} :
+        >{{ playerOne.pseudo }} :
         <span class="result-score">{{ playerOne.score }}</span></span
       >
       <span
-        >{{ playerTwo.firstname }} {{ playerTwo.lastname }} :
+        >{{ playerTwo.pseudo }} :
         <span class="result-score">{{ playerTwo.score }}</span></span
       >
     </p>

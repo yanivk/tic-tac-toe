@@ -30,9 +30,9 @@ function writeInColumn(columnNumber: number) {
       player: player.value,
     };
     if (boardStore.getIsWin()) {
-      playerWin.value = `${player.value.firstname} ${player.value.lastname} win this game`;
+      playerWin.value = `${player.value.pseudo} win this game`;
       emit("playerResult", playerWin.value);
-      if (player.value.firstname === playerOne.value.firstname) {
+      if (player.value.pseudo === playerOne.value.pseudo) {
         playerOne.value.score += 1;
       } else {
         playerTwo.value.score += 1;

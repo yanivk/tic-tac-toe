@@ -29,7 +29,7 @@ function restartGame() {
 
 <template>
   <h1>Play page</h1>
-  <h2>Turn of : {{ player.firstname }}</h2>
+  <h2>Turn of : {{ player.pseudo }}</h2>
   <score-board />
   <div v-if="playerWin">
     <p>

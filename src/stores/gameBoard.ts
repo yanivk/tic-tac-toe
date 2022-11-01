@@ -65,8 +65,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[3].isChecked
     ) {
       if (
-        board.value[1].player?.firstname === board.value[2].player?.firstname &&
-        board.value[2].player?.firstname === board.value[3].player?.firstname
+        board.value[1].player?.pseudo === board.value[2].player?.pseudo &&
+        board.value[2].player?.pseudo === board.value[3].player?.pseudo
       ) {
         isWin = true;
       }
@@ -77,8 +77,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[6].isChecked
     ) {
       if (
-        board.value[4].player?.firstname === board.value[5].player?.firstname &&
-        board.value[5].player?.firstname === board.value[6].player?.firstname
+        board.value[4].player?.pseudo === board.value[5].player?.pseudo &&
+        board.value[5].player?.pseudo === board.value[6].player?.pseudo
       ) {
         isWin = true;
       }
@@ -89,8 +89,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[9].isChecked
     ) {
       if (
-        board.value[7].player?.firstname === board.value[8].player?.firstname &&
-        board.value[8].player?.firstname === board.value[9].player?.firstname
+        board.value[7].player?.pseudo === board.value[8].player?.pseudo &&
+        board.value[8].player?.pseudo === board.value[9].player?.pseudo
       ) {
         isWin = true;
       }
@@ -103,8 +103,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[7].isChecked
     ) {
       if (
-        board.value[1].player?.firstname === board.value[4].player?.firstname &&
-        board.value[4].player?.firstname === board.value[7].player?.firstname
+        board.value[1].player?.pseudo === board.value[4].player?.pseudo &&
+        board.value[4].player?.pseudo === board.value[7].player?.pseudo
       ) {
         isWin = true;
       }
@@ -115,8 +115,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[8].isChecked
     ) {
       if (
-        board.value[2].player?.firstname === board.value[5].player?.firstname &&
-        board.value[5].player?.firstname === board.value[8].player?.firstname
+        board.value[2].player?.pseudo === board.value[5].player?.pseudo &&
+        board.value[5].player?.pseudo === board.value[8].player?.pseudo
       ) {
         isWin = true;
       }
@@ -127,8 +127,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[9].isChecked
     ) {
       if (
-        board.value[3].player?.firstname === board.value[6].player?.firstname &&
-        board.value[6].player?.firstname === board.value[9].player?.firstname
+        board.value[3].player?.pseudo === board.value[6].player?.pseudo &&
+        board.value[6].player?.pseudo === board.value[9].player?.pseudo
       ) {
         isWin = true;
       }
@@ -141,8 +141,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[9].isChecked
     ) {
       if (
-        board.value[1].player?.firstname === board.value[5].player?.firstname &&
-        board.value[5].player?.firstname === board.value[9].player?.firstname
+        board.value[1].player?.pseudo === board.value[5].player?.pseudo &&
+        board.value[5].player?.pseudo === board.value[9].player?.pseudo
       ) {
         isWin = true;
       }
@@ -153,8 +153,8 @@ export const useGameBoardStore = defineStore("gameBoard", () => {
       board.value[7].isChecked
     ) {
       if (
-        board.value[3].player?.firstname === board.value[5].player?.firstname &&
-        board.value[5].player?.firstname === board.value[7].player?.firstname
+        board.value[3].player?.pseudo === board.value[5].player?.pseudo &&
+        board.value[5].player?.pseudo === board.value[7].player?.pseudo
       ) {
         isWin = true;
       }

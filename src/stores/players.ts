@@ -4,16 +4,14 @@ import type { PlayerInterface } from "@/interfaces/playerInterface";
 
 export const usePlayerStore = defineStore("player", () => {
   const playerOneInformation = ref<PlayerInterface>({
-    lastname: "Doe",
-    firstname: "John",
+    pseudo: "John",
     symbol: "X",
     hisTurn: true,
     score: 0,
   });
 
   const playerTwoInformation = ref<PlayerInterface>({
-    lastname: "Doe",
-    firstname: "Jane",
+    pseudo: "Jane",
     symbol: "O",
     hisTurn: false,
     score: 0,
